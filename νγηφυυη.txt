@@ -1,0 +1,6 @@
+Host Block if needed:
+127.0.0.1                   cbs.wondershare.com
+127.0.0.1                   www.cbs.wondershare.com
+127.0.0.1                   platform.wondershare.com
+127.0.0.1                   www.wondershare.com
+
