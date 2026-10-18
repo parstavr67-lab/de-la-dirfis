@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>de la Dirfis - Εκπαίδευση</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: url('ferma.jpg') no-repeat center center fixed; background-size: cover; color: #fff; font-family: 'Montserrat', sans-serif; line-height: 1.8; }
+        .body-overlay { background-color: rgba(10, 10, 10, 0.80); min-height: 100vh; }
+        
+        /* Header & Nav */
+        .site-header { background-color: rgba(15, 15, 15, 0.95); padding: 18px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #c5a059; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo-text h1 { font-family: 'Oswald', sans-serif; color: #c5a059; font-size: 1.9rem; letter-spacing: 2px; }
+        .logo-text p { color: #dddddd; font-size: 0.65rem; letter-spacing: 2px; }
+        .main-nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        .main-nav a, summary { color: #ffffff; text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; padding: 10px 0; display: block; cursor: pointer; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        .main-nav a:hover, summary:hover, .main-nav a.active { color: #c5a059; }
+        details { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; background-color: #161616; min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.8); border: 1px solid #c5a059; border-radius: 4px; z-index: 1001; padding: 10px 0; list-style: none; }
+        .dropdown-menu a { padding: 8px 20px; font-size: 0.8rem; color: #cccccc; }
+        .dropdown-menu a:hover { background-color: rgba(197, 160, 89, 0.2); color: #c5a059; }
+        
+        /* Banner & Content */
+        .hero-banner { padding: 40px 20px 20px 20px; display: flex; justify-content: center; }
+        .banner-container { max-width: 1100px; width: 100%; border: 1px solid #c5a059; border-radius: 8px; overflow: hidden; background-color: #111111; }
+        .banner-img { width: 100%; height: auto; display: block; }
+        .main-section { padding: 40px 20px 80px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .content-card { background-color: rgba(18, 18, 18, 0.92); padding: 45px 35px; border-radius: 12px; border: 1px solid rgba(197, 160, 89, 0.4); backdrop-filter: blur(8px); }
+        
+        h2 { font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 2.2rem; text-align: center; letter-spacing: 1.5px; margin-bottom: 10px; }
+        .gold-line { width: 70px; height: 3px; background-color: #c5a059; margin: 0 auto 35px auto; }
+        
+        /* Programs Grid */
+        .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .program-card { background-color: rgba(30, 30, 30, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 10px; padding: 25px; display: flex; flex-direction: column; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .program-card:hover { transform: translateY(-5px); border-color: #c5a059; }
+        .program-title { font-family: 'Oswald', sans-serif; color: #c5a059; font-size: 1.4rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .program-meta { font-size: 0.85rem; color: #b0b0b0; background-color: rgba(0,0,0,0.4); padding: 6px 12px; border-radius: 4px; margin-bottom: 18px; display: inline-block; border-left: 3px solid #c5a059; }
+        .program-list { list-style: none; margin-bottom: 15px; }
+        .program-list li { color: #dddddd; font-size: 0.95rem; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .program-list li::before { content: "✓ "; color: #c5a059; font-weight: bold; }
+        
+        /* Game Section */
+        .game-section { background-color: rgba(25, 25, 25, 0.8); border: 1px dashed rgba(197, 160, 89, 0.5); border-radius: 10px; padding: 25px; margin-bottom: 35px; text-align: center; }
+        .game-title { font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 1.3rem; margin-bottom: 10px; }
+        .game-tags { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 15px 0; }
+        .game-tag { background-color: #c5a059; color: #111; font-weight: 700; padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; }
+        
+        /* Final Message */
+        .final-message { text-align: center; font-style: italic; color: #c5a059; font-size: 1.05rem; line-height: 1.8; border-top: 1px solid rgba(197, 160, 89, 0.3); padding-top: 25px; }
+        
+        footer { text-align: center; padding: 25px 20px; background-color: rgba(10, 10, 10, 0.95); border-top: 1px solid #222222; color: #888888; font-size: 0.85rem; }
+        footer strong { color: #c5a059; }
+    </style>
+</head>
+<body>
+    <div class="body-overlay">
+        <header class="site-header">
+            <div class="header-container">
+                <div class="logo-text">
+                    <h1>DE LA DIRFIS</h1>
+                    <p>ΕΡΑΣΙΤΕΧΝΙΚΗ ΕΚΤΡΟΦΗ ΑΓΓΛΙΚΟΥ ΠΟΪΝΤΕΡ & ΕΚΠΑΙΔΕΥΣΗ ΑΓΓΛΙΚΩΝ ΔΕΙKΤΩΝ</p>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">ΣΧΕΤΙΚΑ</a></li>
+                        <li><a href="dogs.html">ΤΑ ΣΚΥΛΙΑ ΜΑΣ</a></li>
+                        <li><a href="training.html" class="active">ΕΚΠΑΙΔΕΥΣΗ</a></li>
+                        <li>
+                            <details id="photoDetails">
+                                <summary>ΦΩΤΟΓΡΑΦΙΕΣ ▾</summary>
+                                <ul class="dropdown-menu">
+                                    <li><a href="hunting-photos.html">ΚΥΝΗΓΙΑ</a></li>
+                                    <li><a href="dog-photos.html">ΦΩΤΟΓΡΑΦΙΕΣ ΣΚΥΛΩΝ</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details id="videoDetails">
+                                <summary>ΒΙΝΤΕΟ ▾</summary>
+                                <ul class="dropdown-menu">
+                                    <li><a href="hunting-videos.html">ΒΙΝΤΕΟ ΚΥΝΗΓΙΩΝ</a></li>
+                                    <li><a href="dog-videos.html">ΒΙΝΤΕΟ ΣΚΥΛΩΝ</a></li>
+<li><a href="training-videos.html">ΒΙΝΤΕΟ ΕΚΠΑΙΔΕΥΣΗΣ</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li><a href="matings.html">ΖΕΥΓΑΡΩΜΑΤΑ</a></li>
+                        <li><a href="litters.html">ΓΕΝΝΕΣ</a></li>
+                        <li><a href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-banner">
+            <div class="banner-container">
+                <img src="bg.jpg" alt="de la Dirfis Banner" class="banner-img">
+            </div>
+        </section>
+
+        <section class="main-section">
+            <div class="container">
+                <div class="content-card">
+                    <h2>Προγράμματα Εκπαίδευσης</h2>
+                    <div class="gold-line"></div>
+
+                    <div class="programs-grid">
+                        <!-- Card 1 -->
+                        <div class="program-card">
+                            <div class="program-title">🐾 Προεκπαίδευση Νεαρών Σκύλων</div>
+                            <div class="program-meta">Ηλικία: από 6 μηνών | Διάρκεια: 30 ημέρες</div>
+                            <ul class="program-list">
+                                <li>Κοινωνικοποίηση και προσαρμογή</li>
+                                <li>Βασική υπακοή</li>
+                                <li>Επαφή με το φυσικό περιβάλλον</li>
+                                <li>Ανάπτυξη κυνηγετικού ενστίκτου</li>
+                                <li>Πρώτη επαφή με θήραμα</li>
+                            </ul>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="program-card">
+                            <div class="program-title">🎯 Προετοιμασία Κυνηγετικού Σκύλου</div>
+                            <div class="program-meta">Διάρκεια: 45 ημέρες</div>
+                            <ul class="program-list">
+                                <li>Έρευνα και ανάπτυξη κυνηγετικού πάθους</li>
+                                <li>Σταθεροποίηση φέρμας</li>
+                                <li>Υπακοή στο σφύριγμα</li>
+                                <li>Απόρτ / επαναφορά</li>
+                                <li>Συνεργασία σκύλου – κυνηγού</li>
+                                <li>Πρακτική εκπαίδευση σε φυσικό περιβάλλον</li>
+                                <li>Εκπαιδευτικά σε πραγματικές κυνηγετικές συνθήκες</li>
+                            </ul>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="program-card">
+                            <div class="program-title">🏆 Προετοιμασία για Αγώνες</div>
+                            <div class="program-meta">Διάρκεια: Κατόπιν αξιολόγησης</div>
+                            <ul class="program-list">
+                                <li>Ανάπτυξη και βελτίωση έρευνας</li>
+                                <li>Έλεγχος και σταθερότητα φέρμας</li>
+                                <li>Ταχύτητα και τρόπο έρευνας</li>
+                                <li>Συνεργασία και επαφή με τον κυναγωγό</li>
+                                <li>Προσομοίωση αγωνιστικών συνθηκών</li>
+                                <li>Προετοιμασία για αγώνες ικανότητας κυνηγιού</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Game Section -->
+                    <div class="game-section">
+                        <div class="game-title">🌲 Εκπαίδευση σε Φυσικό Θήραμα</div>
+                        <p style="color: #ccc; font-size: 0.95rem;">Η εκπαίδευση πραγματοποιείται, ανάλογα με την εποχή και τις νόμιμες δυνατότητες, σε πραγματικές συνθήκες πεδίου και φυσικό θήραμα.</p>
+                        <div class="game-tags">
+                            <span class="game-tag">Πέρδικα</span>
+                            <span class="game-tag">Ορτύκι</span>
+                            <span class="game-tag">Μπεκάτσα</span>
+                            <span class="game-tag">Φασιανός</span>
+                        </div>
+                        <p style="color: #aaa; font-size: 0.85rem;">Οι διαθέσιμες τοποθεσίες και τα εκπαιδευτικά προγράμματα καθορίζονται ανάλογα με την ηλικία, το επίπεδο και τον στόχο κάθε σκύλου.</p>
+                    </div>
+
+                    <!-- Final Message -->
+                    <div class="final-message">
+                        <p>Κάθε σκύλος αξιολογείται ξεχωριστά πριν την έναρξη του προγράμματος.</p>
+                        <p>Η διάρκεια και το περιεχόμενο της εκπαίδευσης προσαρμόζονται στις δυνατότητες, την ηλικία και τον στόχο του κάθε σκύλου.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 <strong>de la Dirfis</strong> - Ερασιτεχνική Εκτροφή Pointer. Με επιφύλαξη παντός δικαιώματος.</p>
+        </footer>
+    </div>
+</body>
+</html>

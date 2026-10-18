@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>de la Dirfis - Βίντεο Σκύλων</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: url('ferma.jpg') no-repeat center center fixed; background-size: cover; color: #fff; font-family: 'Montserrat', sans-serif; line-height: 1.8; }
+        .body-overlay { background-color: rgba(10, 10, 10, 0.75); min-height: 100vh; }
+        
+        /* Header */
+        .site-header { background-color: rgba(15, 15, 15, 0.95); padding: 18px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #c5a059; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo-text h1 { font-family: 'Oswald', sans-serif; color: #c5a059; font-size: 1.9rem; letter-spacing: 2px; }
+        .logo-text p { color: #dddddd; font-size: 0.65rem; letter-spacing: 2px; }
+        .main-nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        .main-nav a, summary { color: #ffffff; text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; padding: 10px 0; display: block; cursor: pointer; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        .main-nav a:hover, summary:hover, .main-nav a.active { color: #c5a059; }
+        details { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; background-color: #161616; min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.8); border: 1px solid #c5a059; border-radius: 4px; z-index: 1001; padding: 10px 0; list-style: none; }
+        .dropdown-menu a { padding: 8px 20px; font-size: 0.8rem; color: #cccccc; }
+        .dropdown-menu a:hover, .dropdown-menu a.active { background-color: rgba(197, 160, 89, 0.2); color: #c5a059; }
+        
+        /* Banner */
+        .hero-banner { padding: 40px 20px 20px 20px; display: flex; justify-content: center; }
+        .banner-container { max-width: 1100px; width: 100%; border: 1px solid #c5a059; border-radius: 8px; overflow: hidden; background-color: #111111; }
+        .banner-img { width: 100%; height: auto; display: block; }
+        
+        /* Content & Gallery */
+        .main-section { padding: 40px 20px 80px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .content-card { background-color: rgba(18, 18, 18, 0.90); padding: 45px 35px; border-radius: 12px; border: 1px solid rgba(197, 160, 89, 0.4); backdrop-filter: blur(8px); text-align: left; }
+        h2 { font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 2.2rem; text-align: center; letter-spacing: 1.5px; margin-bottom: 10px; }
+        .gold-line { width: 70px; height: 3px; background-color: #c5a059; margin: 0 auto 30px auto; }
+        
+        /* Gallery Grid Layout */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            background-color: #111;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: #c5a059;
+        }
+
+        .gallery-item video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border: 2px solid #c5a059;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.5);
+            outline: none;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #c5a059;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s;
+            z-index: 2001;
+        }
+
+        .lightbox-close:hover {
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer { text-align: center; padding: 25px 20px; background-color: rgba(10, 10, 10, 0.95); border-top: 1px solid #222222; color: #888888; font-size: 0.85rem; }
+        footer strong { color: #c5a059; }
+    </style>
+</head>
+<body>
+    <div class="body-overlay">
+        <header class="site-header">
+    <div class="header-container">
+        <div class="logo-text">
+            <h1>DE LA DIRFIS</h1>
+            <p>ΕΡΑΣΙΤΕΧΝΙΚΗ ΕΚΤΡΟΦΗ ΑΓΓΛΙΚΟΥ ΠΟΪΝΤΕΡ & ΕΚΠΑΙΔΕΥΣΗ ΑΓΓΛΙΚΩΝ ΔΕΙKΤΩΝ</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">ΣΧΕΤΙΚΑ</a></li>
+                <li><a href="dogs.html">ΤΑ ΣΚΥΛΙΑ ΜΑΣ</a></li>
+                <li><a href="training.html">ΕΚΠΑΙΔΕΥΣΗ</a></li>
+                <li>
+                    <details id="photoDetails">
+                        <summary>ΦΩΤΟΓΡΑΦΙΕΣ ▾</summary>
+                        <ul class="dropdown-menu">
+                            <li><a href="hunting-photos.html">ΚΥΝΗΓΙΑ</a></li>
+                            <li><a href="dog-photos.html">ΦΩΤΟΓΡΑΦΙΕΣ ΣΚΥΛΩΝ</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <details id="videoDetails">
+                        <summary>ΒΙΝΤΕΟ ▾</summary>
+                        <ul class="dropdown-menu">
+                            <li><a href="hunting-videos.html">ΒΙΝΤΕΟ ΚΥΝΗΓΙΩΝ</a></li>
+                            <li><a href="dog-videos.html">ΒΙΝΤΕΟ ΣΚΥΛΩΝ</a></li>
+<li><a href="training-videos.html">ΒΙΝΤΕΟ ΕΚΠΑΙΔΕΥΣΗΣ</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li><a href="matings.html">ΖΕΥΓΑΡΩΜΑΤΑ</a></li>
+                <li><a href="litters.html">ΓΕΝΝΕΣ</a></li>
+                <li><a href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+        <section class="hero-banner">
+            <div class="banner-container">
+                <img src="bg.jpg" alt="de la Dirfis Banner" class="banner-img">
+            </div>
+        </section>
+
+        <section class="main-section">
+            <div class="container">
+                <div class="content-card">
+                    <h2>Βίντεο Σκύλων</h2>
+                    <div class="gold-line"></div>
+                    <p style="text-align: center;">Βίντεο από την εκπαίδευση, την καθημερινότητα και τις στιγμές των σκύλων μας.</p>
+
+                    <!-- Πλέγμα Βίντεο -->
+                    <div class="gallery-grid" id="videoGallery"></div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 <strong>de la Dirfis</strong> - Ερασιτεχνική Εκτροφή Pointer. Με επιφύλαξη παντός δικαιώματος.</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <video class="lightbox-content" id="lightboxVid" controls autoplay></video>
+    </div>
+
+    <script>
+        const gallery = document.getElementById('videoGallery');
+        
+        // Άλλαξε εδώ το πλήθος των βίντεο σκύλων που έχεις (π.χ. 1, 2, 5)
+        const totalVideos = 1; 
+
+        // Αυτόματη δημιουργία των βίντεο: dog-vid1.mp4, dog-vid2.mp4 κλπ.
+        for (let i = 1; i <= totalVideos; i++) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            
+            const vidSrc = `dog-vid${i}.mp4`;
+            item.innerHTML = `<video src="${vidSrc}#t=0.1" preload="metadata" onclick="openLightbox('${vidSrc}')"></video>`;
+            
+            gallery.appendChild(item);
+        }
+
+        function openLightbox(src) {
+            const modal = document.getElementById('lightboxModal');
+            const modalVid = document.getElementById('lightboxVid');
+            modal.style.display = 'flex';
+            modalVid.src = src;
+            modalVid.play();
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            const modalVid = document.getElementById('lightboxVid');
+            modalVid.pause();
+            modalVid.src = '';
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
